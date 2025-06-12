@@ -12,53 +12,52 @@ const ProgressCard = ({ progress }: ProgressCardProps) => {
     (progress.completedThisWeek / progress.weeklyGoal) * 100;
 
   return (
-    <Card className="bg-gradient-to-r from-purple-50 to-indigo-50">
+    <Card className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white">
       <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          <Icon name="TrendingUp" size={20} className="text-purple-600" />
+        <CardTitle className="text-xl flex items-center gap-2">
+          <Icon name="TrendingUp" size={24} />
           Ваш прогресс
         </CardTitle>
       </CardHeader>
 
-      <CardContent className="space-y-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <CardContent>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
           <div className="text-center">
-            <div className="text-2xl font-bold text-purple-600">
+            <div className="text-3xl font-bold mb-1">
               {progress.totalTestsTaken}
             </div>
-            <div className="text-sm text-gray-600">Тестов пройдено</div>
+            <div className="text-purple-100 text-sm">Всего тестов</div>
           </div>
 
           <div className="text-center">
-            <div className="text-2xl font-bold text-green-600">
+            <div className="text-3xl font-bold mb-1">
               {progress.averageScore}%
             </div>
-            <div className="text-sm text-gray-600">Средний балл</div>
+            <div className="text-purple-100 text-sm">Средний балл</div>
           </div>
 
           <div className="text-center">
-            <div className="text-2xl font-bold text-orange-600">
+            <div className="text-3xl font-bold mb-1 flex items-center justify-center gap-1">
+              <Icon name="Flame" size={28} className="text-orange-300" />
               {progress.streak}
             </div>
-            <div className="text-sm text-gray-600">Дней подряд</div>
+            <div className="text-purple-100 text-sm">Дней подряд</div>
           </div>
 
           <div className="text-center">
-            <div className="text-2xl font-bold text-blue-600">
+            <div className="text-3xl font-bold mb-1">
               {progress.completedThisWeek}/{progress.weeklyGoal}
             </div>
-            <div className="text-sm text-gray-600">На этой неделе</div>
+            <div className="text-purple-100 text-sm">За неделю</div>
           </div>
         </div>
 
-        <div>
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium">Недельная цель</span>
-            <span className="text-sm text-gray-600">
-              {Math.round(weeklyProgress)}%
-            </span>
+        <div className="space-y-2">
+          <div className="flex justify-between text-sm">
+            <span>Недельная цель</span>
+            <span>{Math.round(weeklyProgress)}%</span>
           </div>
-          <Progress value={weeklyProgress} className="h-2" />
+          <Progress value={weeklyProgress} className="h-3 bg-purple-400/30" />
         </div>
       </CardContent>
     </Card>
